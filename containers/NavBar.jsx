@@ -11,6 +11,7 @@ export const NavBar = () => {
       justify="Center"
       align="top"
       pos="Fixed"
+      zIndex={100}
     >
       <Stack isInline spacing={12} align="center">
         <Text>Za Fud Proyect</Text>

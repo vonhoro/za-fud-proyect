@@ -17,10 +17,11 @@ export default function Home() {
       <NavBar />
       <PublicityPoi />
       <MealList />
-      { 
-         lista.map((item, index) => (
-        <h1>lol</h1>
-      )) }
+      {
+        // lista.map((item, index) => (
+        // <h1>lol</h1>
+        // ))
+      }
     </>
   );
 }

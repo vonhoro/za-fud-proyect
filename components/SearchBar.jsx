@@ -33,7 +33,7 @@ export const SearchBar = ({ Heigh, Width, MarginTop }) => {
               as={"Text"}
               transition="all 0.2s"
               rounded="md"
-              borderWidth="1px"
+              borderwidth="1px"
               bg="white"
               _hover={{ bg: "red" }}
               _expanded={{ bg: "gray.200" }}
