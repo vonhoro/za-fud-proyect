@@ -1,7 +1,11 @@
 import styles from "../styles/NavBar.module.scss";
 import { SearchBar } from "../components/SearchBar";
 import { Box, Button, Flex, Text, Stack, Icon } from "@chakra-ui/core";
-export const NavBar = () => {
+import { useRouter } from "next/router";
+
+export const NavBar = ({ UserData }) => {
+  const router = useRouter();
+
   return (
     <Flex
       w="100vw"
@@ -33,7 +37,24 @@ export const NavBar = () => {
         </Stack>
         <Stack isInline align="center" spacing={2}>
           <Icon name="moon" />
-          <Text> User </Text>
+
+          {UserData ? (
+            <>
+              {" "}
+              <Stack isInline spacing={2} align="center" ml={6}>
+                <Text> {UserData.user}</Text>
+                <Text>LogOut</Text>{" "}
+              </Stack>
+            </>
+          ) : (
+            <Text
+              onClick={(e) => {
+                router.push("/login");
+              }}
+            >
+              Login
+            </Text>
+          )}
         </Stack>
       </Stack>
     </Flex>

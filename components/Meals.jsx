@@ -6,6 +6,7 @@ export const Meals = ({ Content, Type, Timing, Movement, Color }) => {
     let goBack = 0;
 
     setInterval(() => {
+      if (!ref.current) return;
       if (ref.current.scrollLeft === ref.current.scrollLeftMax) {
         goBack = 16;
       }
