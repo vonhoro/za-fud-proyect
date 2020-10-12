@@ -34,7 +34,7 @@ const schema = gql`
   }
 
   type Mutation {
-    addUser(username: String!, password: String!): RegisResponse
+    addUser(username: String!, email: String!, password: String!): RegisResponse
     login(username: String!, password: String!): RegisResponse
   }
 
@@ -78,7 +78,7 @@ const resolvers = {
   Mutation: {
     addUser: async (parent, args, { req }, info) => {
       try {
-        const { username, password } = args;
+        const { username, email, password } = args;
         if (username.length < 3)
           return {
             error: [
@@ -113,11 +113,25 @@ const resolvers = {
             ],
           };
         }
+        const mailExist = await db.findOne({ email });
+
+        if (mailExist) {
+          return {
+            error: [
+              {
+                item: "E-mail",
+                message: "E-mail already exist",
+              },
+            ],
+          };
+        }
+
         const dateOfCreation = new Date();
         const hashPassword = await bcrypt.hash(password, saltRounds);
 
         const userDocument = {
           username,
+          email,
           password: hashPassword,
           dateOfCreation,
           dateOfUpdate: "",
@@ -139,13 +153,13 @@ const resolvers = {
     },
     login: async (parent, args, { req, res }, info) => {
       try {
-        console.log("ksjklsfklsfjksfjklsflkjfs");
         const { username, password } = args;
         const db = await connectToDB("admin", "users");
 
-        const query = { username };
-        const options = { projection: { _id: 1, password: 1 } };
+        const query = { $or: [{ username }, { email: username }] };
+        const options = { projection: { _id: 1, username: 1, password: 1 } };
         const hash = await db.findOne(query, options);
+
         if (!hash) {
           return {
             error: [
@@ -172,7 +186,7 @@ const resolvers = {
 
         return {
           userInfo: {
-            user: username,
+            user: hash.username,
             userId: hash._id,
             welcome: `Welcome back!`,
           },

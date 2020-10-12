@@ -1,0 +1,131 @@
+[{
+  "_id": {
+    "$oid": "5f79bc904fc4253444f578d9"
+  },
+  "username": "God",
+  "password": "$2b$10$ZMuV9Hu8QLqLiAWGLBJJJOkEyDrDBOwGORwXrNp6/1YycNp3iK5H6",
+  "dateOfCreation": {
+    "$date": "2020-10-04T12:14:08.449Z"
+  },
+  "dateOfUpdate": ""
+},{
+  "_id": {
+    "$oid": "5f79c1c5c11270430052ee7b"
+  },
+  "username": "Gode",
+  "password": "$2b$10$GDnIcHxZRR62phDkmERAiuVGcFn1Ey8k/KRAKFXCvSfDvV/Q2Hmku",
+  "dateOfCreation": {
+    "$date": "2020-10-04T12:36:21.573Z"
+  },
+  "dateOfUpdate": ""
+},{
+  "_id": {
+    "$oid": "5f79cc9d5559d052b0f4dc3d"
+  },
+  "username": "Goladladklade",
+  "password": "$2b$10$4ugOjOb9KqDiO2II981AKOrQ7E7IZbGtSSXAYrbfgMIeBA.ztjDS2",
+  "dateOfCreation": {
+    "$date": "2020-10-04T13:22:37.194Z"
+  },
+  "dateOfUpdate": ""
+},{
+  "_id": {
+    "$oid": "5f79ccac5559d052b0f4dc3e"
+  },
+  "username": "Goladladkasadde",
+  "password": "$2b$10$hVVb6bJwJ8NuoRVtw.M3MODNiyzbcz9ic6hiB5w02k7aozIsYyhPO",
+  "dateOfCreation": {
+    "$date": "2020-10-04T13:22:52.795Z"
+  },
+  "dateOfUpdate": ""
+},{
+  "_id": {
+    "$oid": "5f7b1754e229d2519c0b91a7"
+  },
+  "username": "Dios",
+  "password": "$2b$10$7k2DYO9kr7HxNWdrTpF/AufRt2pINV7w/tJhN142Oq/Pdpz9eKvDi",
+  "dateOfCreation": {
+    "$date": "2020-10-05T12:53:40.369Z"
+  },
+  "dateOfUpdate": ""
+},{
+  "_id": {
+    "$oid": "5f7b1c8e429e512030917d51"
+  },
+  "username": "Devil",
+  "password": "$2b$10$sr/C92aUZnYSPzVQCxHNeOkHeMSqUVyq67L1ePWM7QMMKr21p75oe",
+  "dateOfCreation": {
+    "$date": "2020-10-05T13:15:58.100Z"
+  },
+  "dateOfUpdate": ""
+},{
+  "_id": {
+    "$oid": "5f7c5a57c279d8272c4c3531"
+  },
+  "username": "Deil",
+  "password": "$2b$10$Lr1f6KbMMaYz188H7dczUusGHupDfRxI677dS2jIr2H.9csp8aaea",
+  "dateOfCreation": {
+    "$date": "2020-10-06T11:51:51.809Z"
+  },
+  "dateOfUpdate": ""
+},{
+  "_id": {
+    "$oid": "5f7c5ca970e5702d40acdfb4"
+  },
+  "username": "Demark",
+  "password": "$2b$10$7NEU9Ekw94babxow5bkzQObPrXyg4O3d7uikpvVW5vYSNf4bLwgHe",
+  "dateOfCreation": {
+    "$date": "2020-10-06T12:01:44.999Z"
+  },
+  "dateOfUpdate": ""
+},{
+  "_id": {
+    "$oid": "5f7cb8e52c8bbd1cecef3374"
+  },
+  "username": "Pablo",
+  "password": "$2b$10$gCdflLGeA9qNoG8RYLwdtO4xyj.7B.kcUrx2YWOtMiu3oKXzR7kGq",
+  "dateOfCreation": {
+    "$date": "2020-10-06T18:35:16.879Z"
+  },
+  "dateOfUpdate": ""
+},{
+  "_id": {
+    "$oid": "5f7cb92a2558d40aa00cfca4"
+  },
+  "username": "Juan",
+  "password": "$2b$10$bPLKC8SH.eMhnwuCgJgQHuizH9hbLngiDBMCiXCDHN1RPBVGPGwwi",
+  "dateOfCreation": {
+    "$date": "2020-10-06T18:36:26.098Z"
+  },
+  "dateOfUpdate": ""
+},{
+  "_id": {
+    "$oid": "5f7e16518925162be81c614b"
+  },
+  "username": "Daniel",
+  "password": "$2b$10$iLV1r1LiY9sl3jbCZMIVM.iDGJEF6zdUVhBCgKy9HvPxh3n5OSBxO",
+  "dateOfCreation": {
+    "$date": "2020-10-07T19:26:09.357Z"
+  },
+  "dateOfUpdate": ""
+},{
+  "_id": {
+    "$oid": "5f7e17f18925162be81c614c"
+  },
+  "username": "Pedro",
+  "password": "$2b$10$TQLligsQn/ZeDO37yfmhXeqv4yKUIkurcquJEc.A/DC6uYdFoY0ki",
+  "dateOfCreation": {
+    "$date": "2020-10-07T19:33:05.635Z"
+  },
+  "dateOfUpdate": ""
+},{
+  "_id": {
+    "$oid": "5f84cc03d8f0b516206610cd"
+  },
+  "username": "mario",
+  "password": "$2b$10$iek9WP5o.Xszwc8f1zKHMOAfY9rG.ewitiC0DgZfaNZnnHwWVFZ.e",
+  "dateOfCreation": {
+    "$date": "2020-10-12T21:34:59.791Z"
+  },
+  "dateOfUpdate": ""
+}]
