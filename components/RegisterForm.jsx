@@ -6,12 +6,10 @@ import { useRouter } from "next/router";
 import {
   Text,
   Box,
-  Link,
   FormControl,
   FormLabel,
   Input,
   Stack,
-  Checkbox,
   Button,
   IconButton,
   Divider,
@@ -31,8 +29,8 @@ const LOGIN_USER = gql`
     }
   }
 `;
-export const LoginForm = () => {
-  const router = useRouter();
+export const RegisterForm = () => {
+  /*const router = useRouter();
   const [loginUser, { data }] = useMutation(LOGIN_USER);
   const [response, setResponse] = React.useState(null);
   // console.log(data);
@@ -52,7 +50,7 @@ export const LoginForm = () => {
       return;
     }
     setResponse("");
-  }, [data]);
+  }, [data]);*/
   return (
     <Box my={8} textAlign="left">
       <form
@@ -60,7 +58,7 @@ export const LoginForm = () => {
           e.preventDefault();
           console.log("Usuario ", e.target[0].value);
           console.log("Password ", e.target[1].value);
-          loginUser({
+          RegisterUser({
             variables: {
               username: e.target[0].value,
               password: e.target[1].value,
@@ -68,34 +66,35 @@ export const LoginForm = () => {
           });
         }}
       >
-        <FormControl isRequired>
-          <FormLabel>CORREO/USUARIO</FormLabel>
-          <Input type="text" borderColor="gray.400" _hover={{ borderColor: "orange.400" }} placeholder="Ingrese su direccion de correo" />
+        <FormControl mt="4" isRequired>
+          <FormLabel>USUARIO</FormLabel>
+          <Input type="text" placeholder="Nombre de usuario" borderColor="gray.400" _hover={{ borderColor: "orange.400" }} />
+        </FormControl>
+
+        <FormControl mt="4" isRequired>
+          <FormLabel>CORREO</FormLabel>
+          <Input type="text" placeholder="Ingrese su direccion de correo" borderColor="gray.400" _hover={{ borderColor: "orange.400" }} />
         </FormControl>
 
         <FormControl mt={4} isRequired>
           <FormLabel>CONTRASEÑA</FormLabel>
-          <Input type="password" borderColor="gray.400" _hover={{ borderColor: "orange.400" }} placeholder="Ingrese su contraseña" />
+          <Input type="password" placeholder="Ingrese su contraseña" borderColor="gray.400" _hover={{ borderColor: "orange.400" }} />
         </FormControl>
 
-        <Stack isInline justifyContent="space-between" mt={4}>
-          <Box>
-            <Checkbox border="grey">Recuerdame</Checkbox>
-          </Box>
+        <FormControl mt={4} isRequired>
+          <FormLabel>REINGRESAR SU CONTRASEÑA</FormLabel>
+          <Input type="password" placeholder="Reescriba su contraseña" borderColor="gray.400" _hover={{ borderColor: "orange.400" }} />
+        </FormControl>
 
-          <Box>
-            <Link color={`orange.500`}>¿Olvidaste tu contraseña?</Link>
-          </Box>
-        </Stack>
-
-        <Button type="submit" variantColor={"orange"} width="full" mt={4}>
-          Iniciar Sesion
+        <Button type="submit" variantColor={"orange"} width="full" mt={6}>
+          REGISTRARSE
         </Button>
       </form>
-      <Box>
-        <Divider borderColor="orange.500" mt="4"></Divider>
-        <Text textAlign="center" fontSize="12px" fontWeight="Bold" color="orange.400" mt="4">Tambien puede iniciar sesion con </Text>
-        <Stack isInline justifyContent="Center" mt="2">
+
+      <Box isInline>
+        <Divider mt="4" borderColor="orange.500"></Divider>
+        <Text textAlign="center" fontSize="13px" fontWeight="Bold" color="orange.400" mt="2">Tambien puedes registrarte con </Text>
+        <Stack isInline justifyContent="Center" paddingTop="2px">
           <IconButton aria-label="Social-Media" icon={"moon"} />
           <IconButton aria-label="Social-Media" icon={"moon"} />
         </Stack>
