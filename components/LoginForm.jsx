@@ -3,6 +3,10 @@ import React from "react";
 import { useMutation, gql } from "@apollo/client";
 import { useRouter } from "next/router";
 
+import * as Yup from "yup";
+import { Formik, Form } from "formik";
+import { InputField } from "./InputField";
+
 import {
   Text,
   Box,
@@ -34,67 +38,94 @@ const LOGIN_USER = gql`
 export const LoginForm = () => {
   const router = useRouter();
   const [loginUser, { data }] = useMutation(LOGIN_USER);
-  const [response, setResponse] = React.useState(null);
+  const [response, setResponse] = React.useState({ item: "", message: "" });
+  const [valid, setValid] = React.useState(true);
   // console.log(data);
   React.useEffect(() => {
     if (!data) return;
     console.log(data);
     const information = data.login;
     if (information.error) {
-      setResponse(information.error[0].message);
+      setResponse({
+        item: information.error[0].item,
+        message: information.error[0].message,
+      });
+      setValid(false);
       return;
     }
     if (information.userInfo) {
-      setResponse(
-        `${information.userInfo.welcome} ${information.userInfo.user}`
-      );
-      // setTimeout(() => router.push("/"), 1000);
+      router.push("/");
       return;
     }
-    setResponse("");
+    setResponse({ item: "", message: "" });
   }, [data]);
   return (
     <Box my={8} textAlign="left">
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          console.log("Usuario ", e.target[0].value);
-          console.log("Password ", e.target[1].value);
+      <Formik
+        initialValues={{
+          username: "",
+          password: "",
+        }}
+        onSubmit={(values, { setSubmitting, setErrors }) => {
           loginUser({
             variables: {
-              username: e.target[0].value,
-              password: e.target[1].value,
+              username: values.username,
+              password: values.password,
             },
           });
+
+          setSubmitting(false);
         }}
       >
-        <FormControl isRequired>
-          <FormLabel>CORREO/USUARIO</FormLabel>
-          <Input type="text" borderColor="gray.400" _hover={{ borderColor: "orange.400" }} placeholder="Ingrese su direccion de correo" />
-        </FormControl>
+        {({ values, handleChange, isSubmitting, isValid }) => (
+          <Form>
+            <InputField
+              backendError={response}
+              name="username"
+              placholder="Ingrese su usuario o direccion de correo"
+              label="Correo/Usuario"
+            />
+            <InputField
+              backendError={response}
+              mt={4}
+              type="password"
+              name="password"
+              placeholder="Ingrese su contraseña"
+              label="Contraseña"
+            />
+            <Stack isInline justifyContent="space-between" mt={4}>
+              <Box>
+                <Checkbox border="grey">Recuerdame</Checkbox>
+              </Box>
 
-        <FormControl mt={4} isRequired>
-          <FormLabel>CONTRASEÑA</FormLabel>
-          <Input type="password" borderColor="gray.400" _hover={{ borderColor: "orange.400" }} placeholder="Ingrese su contraseña" />
-        </FormControl>
-
-        <Stack isInline justifyContent="space-between" mt={4}>
-          <Box>
-            <Checkbox border="grey">Recuerdame</Checkbox>
-          </Box>
-
-          <Box>
-            <Link color={`orange.500`}>¿Olvidaste tu contraseña?</Link>
-          </Box>
-        </Stack>
-
-        <Button type="submit" variantColor={"orange"} width="full" mt={4}>
-          Iniciar Sesion
-        </Button>
-      </form>
+              <Box>
+                <Link color={`orange.500`}>¿Olvidaste tu contraseña?</Link>
+              </Box>
+            </Stack>
+            <Button
+              type="submit"
+              isLoading={isSubmitting}
+              isDisable={isValid && valid}
+              variantColor={isValid && valid ? "orange" : "gray"}
+              width="full"
+              mt={4}
+            >
+              Iniciar Sesion
+            </Button>
+          </Form>
+        )}
+      </Formik>
       <Box>
         <Divider borderColor="orange.500" mt="4"></Divider>
-        <Text textAlign="center" fontSize="12px" fontWeight="Bold" color="orange.400" mt="4">Tambien puede iniciar sesion con </Text>
+        <Text
+          textAlign="center"
+          fontSize="12px"
+          fontWeight="Bold"
+          color="orange.400"
+          mt="4"
+        >
+          Tambien puede iniciar sesion con{" "}
+        </Text>
         <Stack isInline justifyContent="Center" mt="2">
           <IconButton aria-label="Social-Media" icon={"moon"} />
           <IconButton aria-label="Social-Media" icon={"moon"} />

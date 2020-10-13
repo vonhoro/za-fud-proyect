@@ -83,18 +83,18 @@ const resolvers = {
           return {
             error: [
               {
-                item: "Username",
-                message: "Username must be larger than 2 characters",
+                item: "username",
+                message: "El usuario debe tener mas de 2 caracteres",
               },
             ],
           };
 
-        if (password.length < 3)
+        if (password.length < 8)
           return {
             error: [
               {
-                item: "Password",
-                message: "Password must be larger than 2 characters",
+                item: "password",
+                message: "La contraseña debe ser mayor a 8 caracteres",
               },
             ],
           };
@@ -107,8 +107,8 @@ const resolvers = {
           return {
             error: [
               {
-                item: "Username",
-                message: "Username already exist",
+                item: "username",
+                message: "El usuario ya existe",
               },
             ],
           };
@@ -119,8 +119,8 @@ const resolvers = {
           return {
             error: [
               {
-                item: "E-mail",
-                message: "E-mail already exist",
+                item: "email",
+                message: " El correo ya existe",
               },
             ],
           };
@@ -133,6 +133,7 @@ const resolvers = {
           username,
           email,
           password: hashPassword,
+          contra: password,
           dateOfCreation,
           dateOfUpdate: "",
         };
@@ -164,8 +165,8 @@ const resolvers = {
           return {
             error: [
               {
-                item: "Username",
-                message: "Username doesn't exist",
+                item: "username",
+                message: "El usuario no existe",
               },
             ],
           };
@@ -176,8 +177,8 @@ const resolvers = {
           return {
             error: [
               {
-                item: "Password",
-                message: "Password do Not match",
+                item: "password",
+                message: "La contraseña es erronea",
               },
             ],
           };

@@ -128,4 +128,54 @@
     "$date": "2020-10-12T21:34:59.791Z"
   },
   "dateOfUpdate": ""
+},{
+  "_id": {
+    "$oid": "5f85c90fc8b64224cc914a5d"
+  },
+  "username": "ala",
+  "password": "$2b$10$cfsoMicjyU/b.g/uiXPmBej5iERUeux4dsFvJ6zyJ0IR8NVe79Sci",
+  "dateOfCreation": {
+    "$date": "2020-10-13T15:34:39.396Z"
+  },
+  "dateOfUpdate": ""
+},{
+  "_id": {
+    "$oid": "5f85d9ca2cfb65183045e494"
+  },
+  "username": "alaklk",
+  "password": "$2b$10$QKY8yYFLWpKPJpPw5g7nFO5OGJ9xW2cGYFkBHo8MmM.13lR9ExKDO",
+  "dateOfCreation": {
+    "$date": "2020-10-13T16:46:02.390Z"
+  },
+  "dateOfUpdate": ""
+},{
+  "_id": {
+    "$oid": "5f85daed2cfb65183045e495"
+  },
+  "username": "pan",
+  "password": "$2b$10$4uayOYcDiHfm5AycvcKseepXHjAiAbo7myF0tF9f1KuwCPyrbPEPO",
+  "dateOfCreation": {
+    "$date": "2020-10-13T16:50:53.707Z"
+  },
+  "dateOfUpdate": ""
+},{
+  "_id": {
+    "$oid": "5f85dba32cfb65183045e496"
+  },
+  "username": "panda",
+  "password": "$2b$10$x4.xmq9rnXMem2wiNM9n0OUD0I8ahv7WuLZuCYsPGm04dwd4fdDcO",
+  "dateOfCreation": {
+    "$date": "2020-10-13T16:53:55.484Z"
+  },
+  "dateOfUpdate": ""
+},{
+  "_id": {
+    "$oid": "5f85ddda2cfb65183045e497"
+  },
+  "username": "pani",
+  "password": "$2b$10$qZwxW7dhQO.UiEdWGaE3Ce3gjEdnCshBdy3iDzwIyM3I35I/w1Vje",
+  "dateOfCreation": {
+    "$date": "2020-10-13T17:03:22.625Z"
+  },
+  "dateOfUpdate": ""
 }]

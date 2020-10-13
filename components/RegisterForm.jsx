@@ -2,18 +2,25 @@ import React from "react";
 
 import { useMutation, gql } from "@apollo/client";
 import { useRouter } from "next/router";
-
+import * as Yup from "yup";
+import { Formik, Form } from "formik";
+import { InputField } from "./InputField";
 import {
   Text,
   Box,
   FormControl,
   FormLabel,
+  FormErrorMessage,
+  FormHelperText,
   Input,
   Stack,
   Button,
   IconButton,
   Divider,
 } from "@chakra-ui/core";
+
+const bodyImage = "";
+
 const REGISTER_USER = gql`
   mutation AddUser($username: String!, $email: String!, $password: String!) {
     addUser(username: $username, email: $email, password: $password) {
@@ -31,91 +38,118 @@ const REGISTER_USER = gql`
 `;
 export const RegisterForm = () => {
   const router = useRouter();
+  let pass;
   const [registerUser, { data }] = useMutation(REGISTER_USER);
-  const [response, setResponse] = React.useState(null);
+  const [response, setResponse] = React.useState({ item: "", message: "" });
   // console.log(data);
   React.useEffect(() => {
     if (!data) return;
     console.log(data);
     const information = data.addUser;
     if (information.error) {
-      setResponse(information.error[0].message);
+      setResponse({
+        item: information.error[0].item,
+        message: information.error[0].message,
+      });
       return;
     }
     if (information.userInfo) {
-      setResponse(
-        `${information.userInfo.welcome} ${information.userInfo.user}`
-      );
-      // setTimeout(() => router.push("/"), 1000);
+      router.push("/");
       return;
     }
-    setResponse("");
+    setResponse({ item: "", message: "" });
   }, [data]);
   return (
     <Box my={8} textAlign="left">
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
+      <Formik
+        initialValues={{
+          username: "",
+          email: "",
+          password: "",
+          passwordCheck: "",
+        }}
+        validationSchema={Yup.object({
+          username: Yup.string()
+            .min(3, "Debe tener 3 caracateres o mas")
+            .required("Campo Obligatorio"),
 
-          if (e.target[2].value !== e.target[3].value) {
-            console.log("Password do not match");
-            return;
-          }
+          email: Yup.string()
+            .email("Correo equivocado")
+            .required("Campo Obligatorio"),
+          password: Yup.string()
+            .min(8, "Almenos debes tener 8 caracteres")
+            .matches(/[a-z]/, "Necesitas almenos una letra minúscula")
+            .matches(/[A-Z]/, "Necesitas almenos una letra mayúscula")
+            .matches(/\d/, "Necesitas almenos una letra número")
+            .matches(
+              /\W/,
+              "Necesitas almenos un carácter especial como ?!@#$%^&*()_+[] "
+            )
+            .required("Campo Obligatorio"),
+          passwordCheck: Yup.string()
+            .oneOf([Yup.ref("password"), null], "Contraseñas son diferentes")
+            .required("Campo Obligatorio"),
+        })}
+        onSubmit={(values, { setSubmitting, setFieldError }) => {
+          if (values.password !== values.passwordCheck) return;
+          setTimeout(() => setSubmitting(false), 500);
 
           registerUser({
             variables: {
-              username: e.target[0].value,
-              email: e.target[1].value,
-              password: e.target[2].value,
+              username: values.username,
+              email: values.email,
+              password: values.password,
             },
           });
+
+          console.log("poooooooooo");
         }}
       >
-        <FormControl mt="4" isRequired>
-          <FormLabel>USUARIO</FormLabel>
-          <Input
-            type="text"
-            placeholder="Nombre de usuario"
-            borderColor="gray.400"
-            _hover={{ borderColor: "orange.400" }}
-          />
-        </FormControl>
+        {({ values, handleChange, isSubmitting, isValid }) => (
+          <Form>
+            <InputField
+              backendError={response}
+              name="username"
+              placholder="Nombre de usuario"
+              label="Usuario"
+            />
+            <InputField
+              backendError={response}
+              mt={4}
+              type="email"
+              name="email"
+              placholder="Ingrese su direccion de correo"
+              label="Correo"
+            />
+            <InputField
+              backendError={response}
+              mt={4}
+              type="password"
+              name="password"
+              placeholder="Ingrese su contraseña"
+              label="Contraseña"
+            />
+            <InputField
+              mt={4}
+              type="password"
+              name="passwordCheck"
+              placeholder="Reescriba  su contraseña"
+              label="Reingresar su Contraseña"
+            />
 
-        <FormControl mt="4" isRequired>
-          <FormLabel>CORREO</FormLabel>
-          <Input
-            type="text"
-            placeholder="Ingrese su direccion de correo"
-            borderColor="gray.400"
-            _hover={{ borderColor: "orange.400" }}
-          />
-        </FormControl>
-
-        <FormControl mt={4} isRequired>
-          <FormLabel>CONTRASEÑA</FormLabel>
-          <Input
-            type="password"
-            placeholder="Ingrese su contraseña"
-            borderColor="gray.400"
-            _hover={{ borderColor: "orange.400" }}
-          />
-        </FormControl>
-
-        <FormControl mt={4} isRequired>
-          <FormLabel>REINGRESAR SU CONTRASEÑA</FormLabel>
-          <Input
-            type="password"
-            placeholder="Reescriba su contraseña"
-            borderColor="gray.400"
-            _hover={{ borderColor: "orange.400" }}
-          />
-        </FormControl>
-
-        <Button type="submit" variantColor={"orange"} width="full" mt={6}>
-          REGISTRARSE
-        </Button>
-      </form>
-
+            <Button
+              type="submit"
+              isLoading={isSubmitting}
+              isDisable={isValid}
+              variantColor={isValid ? "orange" : "gray"}
+              width="full"
+              mt={6}
+            >
+              REGISTRARSE
+            </Button>
+          </Form>
+        )}
+      </Formik>
       <Box isInline>
         <Divider mt="4" borderColor="orange.500"></Divider>
         <Text
