@@ -39,26 +39,7 @@ const REGISTER_USER = gql`
 export const RegisterForm = () => {
   const router = useRouter();
   let pass;
-  const [registerUser, { data }] = useMutation(REGISTER_USER);
-  const [response, setResponse] = React.useState({ item: "", message: "" });
-  // console.log(data);
-  React.useEffect(() => {
-    if (!data) return;
-    console.log(data);
-    const information = data.addUser;
-    if (information.error) {
-      setResponse({
-        item: information.error[0].item,
-        message: information.error[0].message,
-      });
-      return;
-    }
-    if (information.userInfo) {
-      router.push("/");
-      return;
-    }
-    setResponse({ item: "", message: "" });
-  }, [data]);
+  const [registerUser] = useMutation(REGISTER_USER);
   return (
     <Box my={8} textAlign="left">
       <Formik
@@ -72,9 +53,8 @@ export const RegisterForm = () => {
           username: Yup.string()
             .min(3, "Debe tener 3 caracateres o mas")
             .required("Campo Obligatorio"),
-
           email: Yup.string()
-            .email("Correo equivocado")
+            .email("Utilice un correo válido")
             .required("Campo Obligatorio"),
           password: Yup.string()
             .min(8, "Almenos debes tener 8 caracteres")
@@ -82,39 +62,55 @@ export const RegisterForm = () => {
             .matches(/[A-Z]/, "Necesitas almenos una letra mayúscula")
             .matches(/\d/, "Necesitas almenos una letra número")
             .matches(
-              /\W/,
-              "Necesitas almenos un carácter especial como ?!@#$%^&*()_+[] "
+              /[\[\]|\\{}!@#$%^&*()_\-\+:;,.<>/]+/,
+              "Necesitas almenos un carácter especial como ?!@#$%^&*(] "
             )
             .required("Campo Obligatorio"),
           passwordCheck: Yup.string()
             .oneOf([Yup.ref("password"), null], "Contraseñas son diferentes")
             .required("Campo Obligatorio"),
         })}
-        onSubmit={(values, { setSubmitting, setFieldError }) => {
+        onSubmit={async (values, { setSubmitting, setFieldError }) => {
           if (values.password !== values.passwordCheck) return;
-          setTimeout(() => setSubmitting(false), 500);
-
-          registerUser({
+          if (values.username.includes(" ")) {
+            setFieldError(
+              "username",
+              "El usuario no puede contener espacios en blanco"
+            );
+            setSubmitting(false);
+            return;
+          }
+          if (values.password.includes(" ")) {
+            setFieldError(
+              "password",
+              "La contraseña no puede contener espacios en blanco"
+            );
+            setSubmitting(false);
+            return;
+          }
+          const { data } = await registerUser({
             variables: {
               username: values.username,
               email: values.email,
               password: values.password,
             },
           });
-
-          console.log("poooooooooo");
+          setSubmitting(false);
+          if (!data.addUser.error) {
+            router.push("/");
+          }
+          const error = data.addUser.error[0];
+          setFieldError(error.item, error.message);
         }}
       >
         {({ values, handleChange, isSubmitting, isValid }) => (
           <Form>
             <InputField
-              backendError={response}
               name="username"
               placholder="Nombre de usuario"
               label="Usuario"
             />
             <InputField
-              backendError={response}
               mt={4}
               type="email"
               name="email"
@@ -122,7 +118,6 @@ export const RegisterForm = () => {
               label="Correo"
             />
             <InputField
-              backendError={response}
               mt={4}
               type="password"
               name="password"

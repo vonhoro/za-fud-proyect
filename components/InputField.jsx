@@ -14,20 +14,13 @@ import {
   Divider,
 } from "@chakra-ui/core";
 
-export const InputField = ({ label, mt, backendError, ...props }) => {
+export const InputField = ({ label, mt, ...props }) => {
   const [field, { error, initialTouched }] = useField(props);
-  console.log(backendError);
-  console.log(error);
-  console.log(field.name);
-
   /* 
   console.log(props); */
   return (
     <>
-      <FormControl
-        mt={mt}
-        isInvalid={(error || backendError?.item === field.name) && field.value}
-      >
+      <FormControl mt={mt} isInvalid={error && field.value}>
         <FormLabel htmlFor={field.name}>{label}</FormLabel>
         <Input
           {...field}
@@ -38,7 +31,7 @@ export const InputField = ({ label, mt, backendError, ...props }) => {
           _hover={{ borderColor: "orange.400" }}
         />
         <FormErrorMessage mt={-2} mb={-4}>
-          {error || backendError?.message}
+          {error}
         </FormErrorMessage>
       </FormControl>
     </>

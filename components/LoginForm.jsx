@@ -37,28 +37,9 @@ const LOGIN_USER = gql`
 `;
 export const LoginForm = () => {
   const router = useRouter();
-  const [loginUser, { data }] = useMutation(LOGIN_USER);
-  const [response, setResponse] = React.useState({ item: "", message: "" });
+  const [loginUser] = useMutation(LOGIN_USER);
   const [valid, setValid] = React.useState(true);
-  // console.log(data);
-  React.useEffect(() => {
-    if (!data) return;
-    console.log(data);
-    const information = data.login;
-    if (information.error) {
-      setResponse({
-        item: information.error[0].item,
-        message: information.error[0].message,
-      });
-      setValid(false);
-      return;
-    }
-    if (information.userInfo) {
-      router.push("/");
-      return;
-    }
-    setResponse({ item: "", message: "" });
-  }, [data]);
+
   return (
     <Box my={8} textAlign="left">
       <Formik
@@ -66,27 +47,31 @@ export const LoginForm = () => {
           username: "",
           password: "",
         }}
-        onSubmit={(values, { setSubmitting, setErrors }) => {
-          loginUser({
+        onSubmit={async (values, { setSubmitting, setFieldError }) => {
+          const { data } = await loginUser({
             variables: {
               username: values.username,
               password: values.password,
             },
           });
-
           setSubmitting(false);
+          if (!data.login.error) {
+            console.log("jaaa");
+            router.push("/");
+          }
+          const error = data.login.error[0];
+
+          setFieldError(error.item, error.message);
         }}
       >
         {({ values, handleChange, isSubmitting, isValid }) => (
           <Form>
             <InputField
-              backendError={response}
               name="username"
               placholder="Ingrese su usuario o direccion de correo"
               label="Correo/Usuario"
             />
             <InputField
-              backendError={response}
               mt={4}
               type="password"
               name="password"
@@ -105,8 +90,7 @@ export const LoginForm = () => {
             <Button
               type="submit"
               isLoading={isSubmitting}
-              isDisable={isValid && valid}
-              variantColor={isValid && valid ? "orange" : "gray"}
+              variantColor="orange"
               width="full"
               mt={4}
             >
