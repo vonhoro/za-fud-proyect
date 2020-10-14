@@ -18,7 +18,7 @@ export const RegisterWrapper = () => {
       >
         <Box
           backgroundColor="white"
-          height="615px"
+          height="auto"
           borderWidth={1}
           px={4}
           width="full"

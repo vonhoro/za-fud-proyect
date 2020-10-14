@@ -22,6 +22,7 @@ export const LoginWrapper = () => {
           borderWidth={1}
           px={4}
           width="full"
+          height="auto"
           maxWidth="500px"
           borderRadius={10}
           textAlign="center"
