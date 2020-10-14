@@ -1,4 +1,3 @@
-import styles from "../styles/NavBar.module.scss";
 import { SearchBar } from "../components/SearchBar";
 import { Box, Button, Flex, Text, Stack, Icon } from "@chakra-ui/core";
 import { useRouter } from "next/router";

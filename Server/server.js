@@ -34,7 +34,7 @@ const schema = gql`
   }
 
   type Mutation {
-    addUser(username: String!, password: String!): RegisResponse
+    addUser(username: String!, email: String!, password: String!): RegisResponse
     login(username: String!, password: String!): RegisResponse
   }
 
@@ -78,23 +78,23 @@ const resolvers = {
   Mutation: {
     addUser: async (parent, args, { req }, info) => {
       try {
-        const { username, password } = args;
+        const { username, email, password } = args;
         if (username.length < 3)
           return {
             error: [
               {
-                item: "Username",
-                message: "Username must be larger than 2 characters",
+                item: "username",
+                message: "El usuario debe tener mas de 2 caracteres",
               },
             ],
           };
 
-        if (password.length < 3)
+        if (password.length < 8)
           return {
             error: [
               {
-                item: "Password",
-                message: "Password must be larger than 2 characters",
+                item: "password",
+                message: "La contraseña debe ser mayor a 8 caracteres",
               },
             ],
           };
@@ -107,18 +107,33 @@ const resolvers = {
           return {
             error: [
               {
-                item: "Username",
-                message: "Username already exist",
+                item: "username",
+                message: "El usuario ya existe",
               },
             ],
           };
         }
+        const mailExist = await db.findOne({ email });
+
+        if (mailExist) {
+          return {
+            error: [
+              {
+                item: "email",
+                message: " El correo ya existe",
+              },
+            ],
+          };
+        }
+
         const dateOfCreation = new Date();
         const hashPassword = await bcrypt.hash(password, saltRounds);
 
         const userDocument = {
           username,
+          email,
           password: hashPassword,
+          contra: password,
           dateOfCreation,
           dateOfUpdate: "",
         };
@@ -139,19 +154,19 @@ const resolvers = {
     },
     login: async (parent, args, { req, res }, info) => {
       try {
-        console.log("ksjklsfklsfjksfjklsflkjfs");
         const { username, password } = args;
         const db = await connectToDB("admin", "users");
 
-        const query = { username };
-        const options = { projection: { _id: 1, password: 1 } };
+        const query = { $or: [{ username }, { email: username }] };
+        const options = { projection: { _id: 1, username: 1, password: 1 } };
         const hash = await db.findOne(query, options);
+
         if (!hash) {
           return {
             error: [
               {
-                item: "Username",
-                message: "Username doesn't exist",
+                item: "username",
+                message: "El usuario no existe",
               },
             ],
           };
@@ -162,8 +177,8 @@ const resolvers = {
           return {
             error: [
               {
-                item: "Password",
-                message: "Password do Not match",
+                item: "password",
+                message: "La contraseña es erronea",
               },
             ],
           };
@@ -172,7 +187,7 @@ const resolvers = {
 
         return {
           userInfo: {
-            user: username,
+            user: hash.username,
             userId: hash._id,
             welcome: `Welcome back!`,
           },
