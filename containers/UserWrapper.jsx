@@ -31,7 +31,7 @@ export const UserWrapper = () => {
                     width="65%"
                     height="auto"
                 >
-                    <Suscripcion />
+                    <Perfil />
                 </Box>
             </Flex>
         </>
