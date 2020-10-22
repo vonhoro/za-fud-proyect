@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "prettier-watch": "onchange \"**/*.scss\" \"components/*.js\" \"Server/*.js\" \"components/*.ts\" \"components/*.tsx\"  \"pages/*.js\" \"pages/*.ts\" \"pages/*.tsx\"  \"containers/*.js\" \"containers/*.ts\" \"containers/*.tsx\" \"components/*.jsx\"  \"pages/*.jsx\" \"containers/*.jsx\" -- prettier --write {{changed}}",
+    "prettier-watch": "onchange \"**/*.scss\" \"components/*.js\" \"Server/*.js\" \"components/*.ts\" \"components/*.tsx\"  \"pages/*.js\" \"pages/*.ts\" \"pages/*.tsx\"  \"containers/*.js\" \"containers/*.ts\" \"containers/*.tsx\" \"components/*.jsx\"  \"pages/*.jsx\"  \"pages/*/*.jsx\"   \"containers/*.jsx\" -- prettier --write {{changed}}",
     "sass": "node-sass --recursive --watch src/scss/index.scss --output src"
   },
   "dependencies": {

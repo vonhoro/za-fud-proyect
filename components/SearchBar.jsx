@@ -30,7 +30,7 @@ export const SearchBar = ({ Heigh, Width, MarginTop }) => {
           <Menu>
             <MenuButton
               h={Heigh}
-              as={"Text"}
+              as={"text"}
               transition="all 0.2s"
               rounded="md"
               borderwidth="1px"
