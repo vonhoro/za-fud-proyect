@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Flex, Grid, Stack, Text } from "@chakra-ui/core";
+import { MealBox } from "./MealBox";
 export const Meals = ({ Content, Type, Timing, Movement, Color }) => {
   const ref = React.useRef();
   React.useEffect(() => {
@@ -35,35 +36,12 @@ export const Meals = ({ Content, Type, Timing, Movement, Color }) => {
         h="24vh"
       >
         {Content.map((data, index) => (
-          <Grid
-            mt="0vh"
-            mb="0vh"
+          <MealBox
             key={index.toString()}
-            bg="red.50"
-            w="20vw"
-            shadow="md"
-            mx="1vw"
-            h="14.5vh"
-            textAlign="center"
-            templateAreas={`  "img img  food food "  
-                "img img price price "
-                              
-                               "img img  walking car  "
-                            
-               `}
-            padding=".5em"
-          >
-            <Box w="10vw" h="12vh" gridArea="img" bg="green.200" />
-            <Box h="3vh" mt="0vh" gridArea="food">
-              <Text mt="0vh">{data.local}</Text>
-              <Text mt="-3vh">{data.name}</Text>
-            </Box>
-            <Text mt="4vh" gridArea="price">
-              {data.price}{" "}
-            </Text>
-            <Box mt="-2vh" gridArea="walking" w="2vw" h="2vh" bg="red.500" />
-            <Box mt="-2vh" gridArea="car" w="2vw" h="2vh" bg="#000" />
-          </Grid>
+            shopName={data.local}
+            name={data.name}
+            price={data.price}
+          />
         ))}
       </Flex>
     </Flex>
