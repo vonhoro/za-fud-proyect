@@ -1,19 +1,33 @@
 import { SearchBar } from "../components/SearchBar";
 import { Box, Button, Flex, Text, Stack, Icon } from "@chakra-ui/core";
 import { useRouter } from "next/router";
+import { useQuery, gql } from "@apollo/client";
+const CHECK_USER = gql`
+  query Me {
+    me {
+      user
+      userId
+      welcome
+    }
+  }
+`;
 
-export const NavBar = ({ UserData }) => {
+export const NavBar = ({ isStatic }) => {
+  const { loading, error, data } = useQuery(CHECK_USER);
+  let check = null;
+  console.log(data?.me);
   const router = useRouter();
 
   return (
     <Flex
-      w="100vw"
+      w="100%"
       h="15vh"
       pb="4vh"
-      bg="#F6DFC4"
+      bg="orange.200"
+      borderBottom="black solid 5px"
       justify="Center"
       align="top"
-      pos="Fixed"
+      pos={isStatic ? "" : "Fixed"}
       zIndex={100}
     >
       <Stack isInline spacing={12} align="center">
@@ -37,11 +51,11 @@ export const NavBar = ({ UserData }) => {
         <Stack isInline align="center" spacing={2}>
           <Icon name="moon" />
 
-          {UserData ? (
+          {data?.me ? (
             <>
               {" "}
               <Stack isInline spacing={2} align="center" ml={6}>
-                <Text> {UserData.user}</Text>
+                <Text> {data?.me.user}</Text>
                 <Text>LogOut</Text>{" "}
               </Stack>
             </>

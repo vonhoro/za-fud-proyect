@@ -24,18 +24,63 @@ async function connectToDB(db, collection) {
   return await database.collection(collection);
 }
 
-// const schema =  . . .
-// const resolvers = . . .
-
 const schema = gql`
-  # so this is a comment lol greatttt
-  type Query {
-    me: User
+  input ShopInformationInput {
+    name: String!
+    horario: String!
+    menuItems: [String!]
+    contactInfo: [ContactInfoInput]
+    foodInfo: [FoodInfoInput]
+  }
+  input ContactInfoInput {
+    contactType: String!
+    contactDetails: String!
+  }
+  input FoodInfoInput {
+    type: String!
+    foodDescription: FoodDescriptionInput!
   }
 
+  input FoodDescriptionInput {
+    name: String!
+    priceTag: String
+    price: Float!
+    descripcion: String!
+    picture: String!
+  }
   type Mutation {
     addUser(username: String!, email: String!, password: String!): RegisResponse
     login(username: String!, password: String!): RegisResponse
+    createShop(input: ShopInformationInput): Error
+  }
+  type ShopInformation {
+    error: Error
+    name: String
+    horario: String
+    menuItems: [String]
+    contactInfo: [ContactInfo]
+    foodInfo: [FoodInfo]
+  }
+  type ContactInfo {
+    contactType: String
+    contactDetails: String
+  }
+  type FoodInfo {
+    type: String
+    foodDescription: FoodDescription
+  }
+
+  type FoodDescription {
+    name: String
+    priceTag: String
+    price: Float
+    descripcion: String
+    picture: String
+  }
+
+  type Query {
+    me: User
+    shop(shopName: String!): ShopInformation
   }
 
   type RegisResponse {
@@ -57,15 +102,12 @@ const schema = gql`
 const resolvers = {
   Query: {
     me: async (parent, args, context, info) => {
-      console.log(context.req.session.userId);
-      console.log("olaaa");
       const db = await connectToDB("admin", "users");
       if (!context.req.session.userId) return null;
       const query = { _id: ObjectId(context.req.session.userId) };
       const options = { projection: { _id: 1, username: 1 } };
       const result = await db.findOne(query, options);
 
-      console.log(result.username);
       const user = result.username;
       const id = result._id;
       return {
@@ -73,6 +115,18 @@ const resolvers = {
         userId: id,
         welcome: `Welcome back!`,
       };
+    },
+    shop: async (parent, { shopName }, context, info) => {
+      const db = await connectToDB("admin", "shops");
+
+      const name = shopName.replace(/-/g, " ");
+      const shop = await db.findOne({ name });
+      if (!shop) {
+        const error = { item: "dataBase", message: "Pagina no existe" };
+
+        return { error };
+      }
+      return shop;
     },
   },
   Mutation: {
@@ -197,6 +251,19 @@ const resolvers = {
           error: [{ item: "Database", message: error }],
         };
       }
+    },
+    createShop: async (parent, { input }, context, info) => {
+      const { contactInfo } = input;
+      // console.log(input);
+
+      const db = await connectToDB("admin", "shops");
+      // console.log(contactInfo[0].contactType);
+
+      await db.insertOne(input);
+      return {
+        item: "shop",
+        message: "nada",
+      };
     },
   },
 };

@@ -1,0 +1,239 @@
+[{
+  "_id": {
+    "$oid": "5f9097f68eecaa2c94dba407"
+  },
+  "name": "La tiendita",
+  "horario": "8am - 7pm",
+  "menuItems": [
+    "Pizzas",
+    "Helados",
+    "Entradas",
+    "Pepitos"
+  ],
+  "contactInfo": [
+    {
+      "contactType": "whatsApp",
+      "contactDetails": "09W09W09W"
+    },
+    {
+      "contactType": "email",
+      "contactDetails": "nose@gmail.com"
+    }
+  ],
+  "foodInfo": [
+    {
+      "type": "Pizza",
+      "name": "Pizza Magarita",
+      "priceTag": "usd",
+      "price": 5.9,
+      "descripcion": "Una pizza con queso y tomate, bien sabrosa",
+      "picture": "pizza.picture.com"
+    },
+    {
+      "type": "Pizza",
+      "name": "Pizza Super",
+      "priceTag": "usd",
+      "price": 8,
+      "descripcion": "Una pizza con queso, jamon, tocineta y cebolla",
+      "picture": "pizza.picture2.com"
+    },
+    {
+      "type": "Pizza",
+      "name": "Pizza Especial",
+      "priceTag": "usd",
+      "price": 12,
+      "descripcion": "Una pizza con queso, camarones salchichas pi;a y sangre de virgen",
+      "picture": "pizza.picture3.com"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5f90a425189ea82a84407d5b"
+  },
+  "name": "Restaurant loco",
+  "horario": "8am - 7pm",
+  "menuItems": [
+    "Ensaladas",
+    "Sopas",
+    "Entradas",
+    "Carnes",
+    "Pescados",
+    "Pizzas"
+  ],
+  "contactInfo": [
+    {
+      "contactType": "whatsApp",
+      "contactDetails": "89849489W"
+    },
+    {
+      "contactType": "Numero de telefono",
+      "contactDetails": "8393099489W"
+    },
+    {
+      "contactType": "email",
+      "contactDetails": "nose@gpopeoom"
+    }
+  ],
+  "foodInfo": [
+    {
+      "type": "Pizza",
+      "foodDescription": {
+        "name": "Pizza Magarita",
+        "priceTag": "usd",
+        "price": 5.9,
+        "descripcion": "Una pizza con queso y tomate, bien sabrosa",
+        "picture": "pizza.picture.com"
+      }
+    },
+    {
+      "type": "Pizza",
+      "foodDescription": {
+        "name": "Pizza Super",
+        "priceTag": "usd",
+        "price": 8,
+        "descripcion": "Una pizza con queso, jamon, tocineta y cebolla",
+        "picture": "pizza.picture2.com"
+      }
+    },
+    {
+      "type": "Entrada",
+      "foodDescription": {
+        "name": "Arepas",
+        "priceTag": "usd",
+        "price": 1,
+        "descripcion": "Arepas con crema de leche ",
+        "picture": "arepa.jpg"
+      }
+    },
+    {
+      "type": "Entrada",
+      "foodDescription": {
+        "name": "Pan de Ajo",
+        "priceTag": "usd",
+        "price": 2.5,
+        "descripcion": "8 piezas de pan de ajo",
+        "picture": "pandeajo.jpg"
+      }
+    },
+    {
+      "type": "Sopa",
+      "foodDescription": {
+        "name": "Sopa de papa",
+        "priceTag": "usd",
+        "price": 3,
+        "descripcion": "Rica sopa con papa huevo y queso",
+        "picture": "sopa.jpg"
+      }
+    },
+    {
+      "type": "Sopa",
+      "foodDescription": {
+        "name": "Sopa de tomate",
+        "priceTag": "usd",
+        "price": 2.5,
+        "descripcion": "Una rica sopa de tomate",
+        "picture": "sopatomate.jpg"
+      }
+    },
+    {
+      "type": "Carne",
+      "foodDescription": {
+        "name": "Solomo Asado",
+        "priceTag": "usd",
+        "price": 4,
+        "descripcion": "200 gramos de carne de solomo sadado con un 2 acompañantes ",
+        "picture": "solomo.jpg"
+      }
+    },
+    {
+      "type": "Pizza",
+      "foodDescription": {
+        "name": "Pizza Especial",
+        "priceTag": "usd",
+        "price": 12,
+        "descripcion": "Una pizza con queso, camarones salchichas pi;a y sangre de virgen",
+        "picture": "pizza.picture3.com"
+      }
+    },
+    {
+      "type": "Carne",
+      "foodDescription": {
+        "name": "Lomito a la putanesca",
+        "priceTag": "usd",
+        "price": 8,
+        "descripcion": "200 gramos de lomito con salsa de tomate y oregano con 2 acompañantes",
+        "picture": "lomito.jpg"
+      }
+    },
+    {
+      "type": "Pescado",
+      "foodDescription": {
+        "name": "Salmon",
+        "priceTag": "usd",
+        "price": 21,
+        "descripcion": "Salmon asado",
+        "picture": "salmon.jpg"
+      }
+    },
+    {
+      "type": "Ensalada",
+      "foodDescription": {
+        "name": "Ensaada cesar",
+        "priceTag": "usd",
+        "price": 1,
+        "descripcion": "Rica ensalada cesar para 2 persoas",
+        "picture": "cesar.jpg"
+      }
+    },
+    {
+      "type": "Parrilla",
+      "foodDescription": {
+        "name": "Parrilla mixta",
+        "priceTag": "usd",
+        "price": 10,
+        "descripcion": "1 kilo de parrilla para 4 personas, con tostones papas queso carne y pollo",
+        "picture": "parrilla.jpg"
+      }
+    },
+    {
+      "type": "Bebida",
+      "foodDescription": {
+        "name": "Refresco",
+        "priceTag": "usd",
+        "price": 1.5,
+        "descripcion": "Refresco de colita, chinoto, coca cola. LLamar para pregunta dispo",
+        "picture": "refresco.jpg"
+      }
+    },
+    {
+      "type": "Bebida",
+      "foodDescription": {
+        "name": "Cerveza",
+        "priceTag": "usd",
+        "price": 4,
+        "descripcion": "Cervza en lata, marca polar",
+        "picture": "polar.jpg"
+      }
+    },
+    {
+      "type": "Postre",
+      "foodDescription": {
+        "name": "Torta de chocolate",
+        "priceTag": "usd",
+        "price": 4,
+        "descripcion": "Super torta de chocolate bien buena yomi",
+        "picture": "torat.jpg"
+      }
+    },
+    {
+      "type": "Postre",
+      "foodDescription": {
+        "name": "Helado de fresa",
+        "priceTag": "usd",
+        "price": 2.3,
+        "descripcion": "Helado de fresa en bola",
+        "picture": "helado.jpg"
+      }
+    }
+  ]
+}]
