@@ -83,15 +83,26 @@ export default function Shops() {
     <>
       <NavBar isStatic />
 
-      <Flex direction="column" bg="orange.100" p={5}>
+      <Flex
+        direction="column"
+        bg="orange.100"
+        p={5}
+        width="100%"
+        align="center"
+      >
         <Grid
+          width="100%"
           templateColumns="55% 35%"
           height="25vh"
           mx="5%"
           justifyContent="center"
         >
-          <Grid templateColumns="20vw 20vw" textAlign="center">
-            <Image width="20vw" height="90%" bg="red.900" />
+          <Grid
+            templateColumns="40% 60%"
+            alignContent="left"
+            textAlign="center"
+          >
+            <Image width="100%" height="90%" bg="red.900" />
             <Box>
               <Stack spacing={5}>
                 <Text as="kbd" fontSize="28px" fontWeight="bold">
@@ -134,7 +145,7 @@ export default function Shops() {
             </Stack>
           </Stack>
         </Grid>
-        <Flex direction="column" bg="orange.200">
+        <Flex direction="column" bg="orange.200" width="full">
           <Box bg="orange.400" textAlign="center">
             {" "}
             <Text as="kbd" fontSize="28px" fontWeight="bold">
@@ -150,7 +161,7 @@ export default function Shops() {
                     {type}
                   </Text>{" "}
                 </Box>
-                <Flex>
+                <Flex wrap="wrap">
                   {meals.map((meal, index) => (
                     <MealBox {...meal} my={4} />
                   ))}
