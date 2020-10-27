@@ -1,9 +1,10 @@
 import React from "react";
-import { Formik, Field, Form } from "formik";
 import { InputField } from "../components/InputField";
 import { NavBar } from "../containers/NavBar";
-import { ImageUploader } from "../components/ImageUploader";
+
 import { MealBox } from "../components/MealBox";
+import { MealBoxForm } from "../components/MealBoxForm";
+import { ImageUploader } from "../components/ImageUploader";
 import {
   Box,
   Button,
@@ -42,11 +43,74 @@ export default function Test() {
   const [menuItemCounter, setMenuItemCounter] = React.useState([
     { type: 1, meals: [1] },
   ]);
+  const [currentEditing, setCurrentEditing] = React.useState({
+    image: "",
+    name: "",
+    price: "",
+    descripcion: "",
+    priceTag: "Bs",
+  });
+  const [mealBoxForm, setMealBoxForm] = React.useState({
+    show: false,
+  });
+
+  React.useEffect(() => {
+    console.log(mealBoxForm);
+    console.log(menuItemCounter);
+  });
+
   const [reRender, setReRender] = React.useState(true);
   // const [contactInfoCounter, setContactInfoCounter] = React.useState([1]);
+  const mealForm = mealBoxForm.show && (
+    <>
+      <Box
+        bg="black"
+        opacity={0.8}
+        zIndex="100"
+        pos="fixed"
+        width="full"
+        height="full"
+      />
+      <MealBoxForm
+        {...currentEditing}
+        closeModal={(e) => setMealBoxForm({ show: false })}
+        onSubmit={(values, { setSubmitting, setFieldError }) => {
+          console.log(values);
+
+          let changeMeal = menuItemCounter;
+          changeMeal[mealBoxForm.index].meals[mealBoxForm.indexMeal] = values;
+          setMenuItemCounter(changeMeal);
+          setMealBoxForm({ show: false });
+
+          // if (values.username.includes(" ")) {
+          // setFieldError(
+          // "username",
+          // "El usuario no puede contener espacios en blanco"
+          // );
+          // setSubmitting(false);
+          // return;
+          // }
+          // if (values.password.includes(" ")) {
+          // setFieldError(
+          // "password",
+          // "La contraseña no puede contener espacios en blanco"
+          // );
+          // setSubmitting(false);
+          // return;
+          // }
+
+          setSubmitting(false);
+          // setReRender(!reRender);
+          // const error = data.addUser.error[0];
+          // setFieldError(error.item, error.message);
+        }}
+      />
+    </>
+  );
 
   return (
     <>
+      {mealForm}
       <NavBar isStatic />
       <Flex
         direction="column"
@@ -174,8 +238,21 @@ export default function Test() {
                 </Editable>
               </Box>
               <Flex wrap="wrap" justify="center">
-                {meals.map((meal, index) => (
-                  <MealBox {...meal} my={4} />
+                {meals.map((meal, indexMeal) => (
+                  <Flex direction="column" bg="orange.600" p={2} my={4}>
+                    <MealBox {...meal} my={4} />
+                    <Button
+                      children="Editar"
+                      variantColor="orange"
+                      color="white"
+                      w="10vw"
+                      alignSelf="center"
+                      onClick={(e) => {
+                        setCurrentEditing(meal);
+                        setMealBoxForm({ show: true, index, indexMeal });
+                      }}
+                    />
+                  </Flex>
                 ))}
 
                 <IconButton

@@ -21,10 +21,9 @@ export const MealBox = ({
   descripcion,
   name,
   priceTag,
-
+  image,
   my,
 }) => {
-  console.log(descripcion);
   return (
     <Popover trigger="hover">
       <PopoverTrigger>
@@ -43,14 +42,14 @@ export const MealBox = ({
             justifySelf="center"
             w="90%"
             h="80%"
-            src=""
+            src={image}
             bg="green.200"
           />
           <Flex direction="column" h="15vh" justify="center">
             {shopName && <Text my="2px">{shopName}</Text>}
             <Text my="2px">{name}</Text>
             <Text my="2px">
-              {priceTag === "usd" ? "$" : "Bs. "}
+              {priceTag === "USD" ? "$" : "Bs. "}
               {price}{" "}
             </Text>{" "}
             <Flex justify="space-evenly" width="100%">
