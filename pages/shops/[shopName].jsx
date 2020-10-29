@@ -3,6 +3,7 @@ import { useQuery, gql } from "@apollo/client";
 import { useRouter } from "next/router";
 import {
   Box,
+  Divider,
   Flex,
   Grid,
   Heading,
@@ -83,81 +84,115 @@ export default function Shops() {
     <>
       <NavBar isStatic />
 
-      <Flex
-        direction="column"
-        bg="orange.100"
-        p={5}
-        width="100%"
-        align="center"
-      >
+      <Flex direction="column" bg="orange.100" width="100%" align="center">
         <Grid
           width="100%"
-          templateColumns="55% 35%"
-          height="25vh"
-          mx="5%"
+          templateColumns="55% 45%"
+          height="35vh"
+          ml="5%"
           justifyContent="center"
+          alignItems="center"
         >
           <Grid
             templateColumns="40% 60%"
-            alignContent="left"
+            justifyContent="center"
+            alignItems="center"
             textAlign="center"
           >
-            <Image width="100%" height="90%" bg="red.900" />
+            <Image width="100%" height="30vh" borderRadius="20%" bg="red.900" />
             <Box>
               <Stack spacing={5}>
-                <Text as="kbd" fontSize="28px" fontWeight="bold">
-                  {shopData?.name}
-                </Text>
-                <Text as="kbd" fontSize="18px" fontWeight="bold">
-                  Horario de Servicio
-                </Text>
                 <Text
                   as="kbd"
-                  color="red.500"
-                  fontSize="18px"
+                  fontSize="32px"
+                  color="orange.900"
                   fontWeight="bold"
                 >
-                  {shopData?.horario}
+                  {shopData?.name}
                 </Text>
+                <Stack spacing={-1}>
+                  <Text
+                    as="kbd"
+                    fontSize="22px"
+                    color="orange.700"
+                    fontWeight="bold"
+                  >
+                    Horario de Servicio
+                  </Text>
+                  <Text
+                    as="kbd"
+                    color="red.500"
+                    fontSize="22px"
+                    fontWeight="bold"
+                  >
+                    {shopData?.horario}
+                  </Text>
+                </Stack>
               </Stack>
             </Box>
           </Grid>
-          <Stack spacing={5}>
-            <Text as="kbd" fontSize="22px" fontWeight="bold">
-              Informacion de contacto{" "}
-            </Text>
-
+          <Flex
+            bg="blue.300"
+            height="100%"
+            w="100%"
+            direction="column"
+            align="center"
+            justify="center"
+            borderRadius="50px / 50px 0 0 50px"
+          >
             <Stack spacing={2}>
               {shopData &&
                 shopData.contactInfo.map(
                   ({ contactType, contactDetails }, index) => (
                     <Stack isInline align="center" key={index.toString()}>
-                      <Icon name="phone" size="22px" color="green.500" />
-                      <Text as="kbd" fontSize="16px" fontWeight="bold">
+                      <Text
+                        as="kbd"
+                        fontSize="24px"
+                        color="white"
+                        fontWeight="bold"
+                      >
                         {contactType}
                       </Text>
-                      <Text as="kbd" fontSize="16px" color="gray.500">
+                      <Text
+                        as="kbd"
+                        fontSize="24px"
+                        bg="white"
+                        p={2}
+                        borderRadius="30px"
+                      >
                         {contactDetails}
                       </Text>
                     </Stack>
                   )
                 )}
             </Stack>
-          </Stack>
+          </Flex>
         </Grid>
-        <Flex direction="column" bg="orange.200" width="full">
-          <Box bg="orange.400" textAlign="center">
+        <Flex direction="column" bg="orange.100" width="full">
+          <Box bg="orange.800" textAlign="center">
             {" "}
-            <Text as="kbd" fontSize="28px" fontWeight="bold">
+            <Text as="kbd" color="orange.200" fontSize="28px" fontWeight="bold">
               Menu
             </Text>{" "}
           </Box>
           {foodData &&
             foodData.map(({ type, meals }, index) => (
-              <>
-                <Box bg="yellow.400" textAlign="center" key={index.toString()}>
+              <Flex
+                key={index.toString()}
+                direction="column"
+                align="flex-start"
+              >
+                <Box
+                  color="orange.400"
+                  bg="orange.200"
+                  textAlign="center"
+                  width="10vw"
+                  borderBottomRightRadius="30%"
+                  p={1}
+                  border="none"
+                >
                   {" "}
-                  <Text as="kbd" fontSize="28px" fontWeight="bold">
+                  <Text as="kbd" fontSize="24px" fontWeight="bold">
                     {type}
                   </Text>{" "}
                 </Box>
@@ -166,7 +201,8 @@ export default function Shops() {
                     <MealBox {...meal} my={4} />
                   ))}
                 </Flex>
-              </>
+                <Divider w="full" mb="0" borderColor="orange.300" />
+              </Flex>
             ))}
         </Flex>
       </Flex>

@@ -22,6 +22,9 @@ export const MealBoxForm = ({
   closeModal,
   onSubmit,
 }) => {
+  console.log(priceTag);
+  const tag = priceTag ? priceTag : "Bs";
+  console.log(tag);
   const [mealImage, setMealImage] = React.useState(image);
   return (
     <Box
@@ -49,7 +52,7 @@ export const MealBoxForm = ({
           image,
           name,
           price,
-          priceTag,
+          priceTag: tag,
           descripcion,
         }}
         validationSchema={Yup.object({
@@ -105,9 +108,14 @@ export const MealBoxForm = ({
               spacing={5}
               name="priceTag"
               isInline
-              defaultValue={priceTag}
+              defaultValue={tag}
             >
-              <Radio borderColor="orange.500" variantColor="green" value="Bs">
+              <Radio
+                name="priceTag"
+                borderColor="orange.500"
+                variantColor="green"
+                value="Bs"
+              >
                 Bolivares
               </Radio>
               <Radio borderColor="orange.500" variantColor="green" value="USD">

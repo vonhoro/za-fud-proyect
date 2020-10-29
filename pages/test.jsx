@@ -22,6 +22,7 @@ import {
   IconButton,
   Image,
   Input,
+  Select,
   Stack,
   Text,
 } from "@chakra-ui/core";
@@ -230,16 +231,58 @@ export default function Test() {
           </Box>
           {menuItemCounter.map(({ type, meals }, index) => (
             <>
-              <Box bg="yellow.400" textAlign="center" key={index.toString()}>
+              <Flex
+                bg="yellow.400"
+                align="center"
+                justify="center"
+                key={index.toString()}
+              >
                 {" "}
-                <Editable defaultValue="Carnes , Pescados ...">
-                  <EditablePreview fontSize="28px" fontWeight="bold" as="kbd" />
-                  <EditableInput width="80%" />
-                </Editable>
-              </Box>
+                <Select
+                  m={1}
+                  border={"black solid 1px"}
+                  onChange={(e) => {
+                    console.log(e.target.value);
+                    menuItemCounter[index].type = e.target.value;
+                  }}
+                  placeholder="Tipo de comida"
+                  variant="outlined"
+                  maxWidth="40%"
+                  justifySelf="center"
+                >
+                  <option value="Arepas">Arepas</option>
+                  <option value="Acompañantes">Acompañantes</option>
+                  <option value="Bebidas">Bebidas</option>
+                  <option value="Carnes">Carnes</option>
+                  <option value="Choripanes">Choripanes</option>
+                  <option value="Comida Vegetariana">Comida Vegetariana</option>
+                  <option value="Empanadas">Empanadas</option>
+                  <option value="Emparedados">Emparedados</option>
+                  <option value="Ensaladas">Ensaladas</option>
+                  <option value="Entradas">Entradas</option>
+                  <option value="Frituras">Frituras</option>
+                  <option value="Hamburguesas">Hamburguesas</option>
+                  <option value="Helados">Helados</option>
+                  <option value="Pastas">Pastas</option>
+                  <option value="Pepitos">Pepitos</option>
+                  <option value="Pescados">Pescados</option>
+                  <option value="Perros Calientes">Perros Calientes</option>
+                  <option value="Pizzas">Pizzas</option>
+                  <option value="Pollo">Pollo</option>
+                  <option value="Postres">Postres</option>
+                  <option value="Sopas">Sopas</option>
+                  <option value="Tortas">Tortas</option>
+                </Select>
+              </Flex>
               <Flex wrap="wrap" justify="center">
                 {meals.map((meal, indexMeal) => (
-                  <Flex direction="column" bg="orange.600" p={2} my={4}>
+                  <Flex
+                    direction="column"
+                    bg="orange.600"
+                    p={2}
+                    my={4}
+                    key={indexMeal.toString()}
+                  >
                     <MealBox {...meal} my={4} />
                     <Button
                       children="Editar"

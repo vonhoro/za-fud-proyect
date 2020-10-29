@@ -23,6 +23,7 @@ export const MealBox = ({
   priceTag,
   image,
   my,
+  inIndex,
 }) => {
   return (
     <Popover trigger="hover">
@@ -43,19 +44,23 @@ export const MealBox = ({
             w="90%"
             h="80%"
             src={image}
-            bg="green.200"
+            bg="orange.800"
           />
           <Flex direction="column" h="15vh" justify="center">
             {shopName && <Text my="2px">{shopName}</Text>}
-            <Text my="2px">{name}</Text>
-            <Text my="2px">
+            <Text my="2px" color="orange.600">
+              {name}
+            </Text>
+            <Text my="2px" color="orange.300">
               {priceTag === "USD" ? "$" : "Bs. "}
               {price}{" "}
             </Text>{" "}
-            <Flex justify="space-evenly" width="100%">
-              <Box w="2vw" h="2vh" bg="red.500" />
-              <Box w="2vw" h="2vh" bg="#000" />
-            </Flex>
+            {inIndex && (
+              <Flex justify="space-evenly" width="100%">
+                <Box w="2vw" h="2vh" bg="red.500" />
+                <Box w="2vw" h="2vh" bg="#000" />
+              </Flex>
+            )}
           </Flex>
         </Grid>
       </PopoverTrigger>
