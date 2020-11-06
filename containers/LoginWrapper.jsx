@@ -1,5 +1,8 @@
+import React from 'react'
+
 import { LoginHeader } from "../components/LoginHeader";
 import { LoginForm } from "../components/LoginForm";
+import { Faq } from "../components/Faq"
 
 import { Box, Flex } from "@chakra-ui/core";
 
@@ -32,6 +35,14 @@ export const LoginWrapper = () => {
           <LoginForm />
         </Box>
       </Flex>
+      <Box
+        width="100%"
+        height="100%"
+        border="1px solid"
+        backgroundColor="rgba(0, 0, 0, 1)"
+      >
+        <Faq />
+      </Box>
     </>
   );
 };

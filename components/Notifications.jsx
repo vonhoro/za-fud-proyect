@@ -3,7 +3,9 @@ export const Notifications = () => {
     return (
         <Box
             marginTop="15px"
-            marginLeft="15px">
+            marginLeft="15px"
+            marginBottom="10px"
+        >
             <FormLabel htmlFor="notifications-alerts">Habilitar notificaciones</FormLabel>
             <Switch id="notifications-alerts" />
         </Box>

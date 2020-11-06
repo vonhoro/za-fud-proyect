@@ -6,14 +6,16 @@ import {
   Box,
   Input,
   Avatar,
-  AvatarBadge,
+  Button,
+  Flex,
 } from "@chakra-ui/core";
 import { Formik } from "formik";
 import { InputField } from "./InputField";
 
 export const Perfil = () => {
   return (
-    <Box>
+
+    <>
       <Box
         textAlign="center"
         marginTop="20px"
@@ -28,10 +30,10 @@ export const Perfil = () => {
           src="https://pixabay.com/get/5fe7d6474c52b114f6d0877dc52c357c083ed8e55052704b772e7c.svg?attachment="
         />
       </Box>
-      <Box margin="10px 10px 10px 10px" h="auto">
+      <Box margin="auto" width="75%" paddingBottom="5%" >
         <FormControl isRequired>
           <FormLabel htmlFor="Fname">Nombre</FormLabel>
-          <Input id="Fname" placeholder="First Nombre" />
+          <Input id="Fname" placeholder="Primer Nombre" />
         </FormControl>
 
         <FormControl mt={5} isRequired>
@@ -49,8 +51,12 @@ export const Perfil = () => {
           <Input id="Rpassword" placeholder="Contraseña" />
         </FormControl>
 
-        {/*<Button>Aqui modificame</Button>*/}
+        <Box marginTop="5%" textAlign="center"
+        >
+          <Button marginRight="2%">Guardar</Button>
+          <Button>Cancelar</Button>
+        </Box>
       </Box>
-    </Box>
+    </>
   );
 };

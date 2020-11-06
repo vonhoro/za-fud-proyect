@@ -1,14 +1,14 @@
 import { Box, Flex, Text, Grid, Link, Divider } from "@chakra-ui/core";
-export const NavSideBar = ({changeToUbicacion, changeToPerfil}) => {
+export const NavSideBar = ({ changeToUbicacion, changeToPerfil, changeToSuscripcion, changeToNotifications }) => {
   return (
     <Box>
-      <p>Tipo de membresia</p>
+      <p onClick={changeToSuscripcion}>Tipo de membresia</p>
 
       <p onClick={changeToPerfil}>Perfil</p>
 
       <p onClick={changeToUbicacion}>Ubicacion</p>
 
-      <p>Notificaciones</p>
+      <p onClick={changeToNotifications}>Notificaciones</p>
 
       <p>Borrar cuenta</p>
       <Divider borderColor="orange.500" />
