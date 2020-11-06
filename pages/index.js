@@ -1,8 +1,10 @@
 import Head from "next/head";
+import { Faq } from "../components/Faq"
 import { NavBar } from "../containers/NavBar";
 import { PublicityPoi } from "../containers/PublicityPoi";
 import { MealList } from "../containers/MealList";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery, gql, from } from "@apollo/client";
+import { Box } from "@chakra-ui/core";
 const CHECK_USER = gql`
   query Me {
     me {
@@ -36,6 +38,14 @@ export default function Home() {
         // <h1>lol</h1>
         // ))
       }
+      <Box
+        width="100%"
+        height="100%"
+        border="1px solid"
+        backgroundColor="rgba(0, 0, 0, 1)"
+      >
+        <Faq />
+      </Box>
     </>
   );
 }

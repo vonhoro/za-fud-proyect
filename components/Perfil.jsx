@@ -7,7 +7,7 @@ import {
   Input,
   Avatar,
   Button,
-  Flex,
+  Text,
 } from "@chakra-ui/core";
 import { Formik } from "formik";
 import { InputField } from "./InputField";
@@ -23,7 +23,12 @@ export const Perfil = () => {
         marginRight="auto"
         width="20%"
       >
-        <p>Foto de perfil</p>
+        <Text
+          fontSize="24px"
+          fontWeight="Bold"
+        >
+          <p>Foto de perfil</p>
+        </Text>
         <Avatar
           size="2xl"
           name="Profile_image"

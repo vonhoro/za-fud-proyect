@@ -6,6 +6,7 @@ import { Suscripcion } from "../components/Suscripcion";
 import { Perfil } from "../components/Perfil";
 import { Ubicacion } from "../components/Ubicacion";
 import { Notifications } from "../components/Notifications"
+import { Borrar_Cuenta } from "../components/Borrar_Cuenta"
 import { Faq } from "../components/Faq"
 import { Box, Flex, Center } from "@chakra-ui/core";
 
@@ -33,6 +34,10 @@ export const UserWrapper = () => {
       case "Notifications":
         return <Notifications />
         break
+
+      case "Borrar_Cuenta":
+        return <Borrar_Cuenta />
+        break
     }
 
 
@@ -56,7 +61,7 @@ export const UserWrapper = () => {
           marginLeft="10px"
           width="35%"
           height="50%">
-          <NavSideBar changeToSuscripcion={e => setVista("Suscripcion")} changeToUbicacion={e => setVista('Ubicacion')} changeToPerfil={e => setVista('Perfil')} changeToNotifications={e => setVista("Notifications")} />
+          <NavSideBar changeToSuscripcion={e => setVista("Suscripcion")} changeToUbicacion={e => setVista('Ubicacion')} changeToPerfil={e => setVista('Perfil')} changeToNotifications={e => setVista("Notifications")} changeToBorrar_Cuenta={e => setVista("Borrar_Cuenta")} />
         </Box>
 
         <Box
