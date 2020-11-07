@@ -7,7 +7,6 @@ import {
     Input,
     Button,
     Text,
-    Stack,
 
 } from "@chakra-ui/core";
 import { Formik } from "formik";
@@ -18,18 +17,18 @@ export const Borrar_Cuenta = () => {
 
         <>
             <Box
+                borderTop="1px"
+                borderBottom="1px"
+                borderRadius="10px 10px 0px 0px"
                 textAlign="center"
-                marginTop="20px"
+                marginTop="-1px"
                 marginLeft="auto"
                 marginRight="auto"
-                width="30%"
+                marginBottom="10px"
+                backgroundColor="white"
+                padding="-20px"
             >
-                <Text
-                    fontSize="24px"
-                    fontWeight="bold"
-                >
-                    <p>Borrar cuenta</p>
-                </Text>
+                <h2>Borrar Cuenta</h2>
             </Box>
             <Box margin="auto" width="75%" paddingBottom="5%" >
                 <FormControl isRequired>
@@ -60,8 +59,8 @@ export const Borrar_Cuenta = () => {
                             <p>¿Seguro que quiere borrar su cuenta?</p>
                         </Text>
                     </Box>
-                    <Button marginRight="2%">Borrar</Button>
-                    <Button>Cancelar</Button>
+                    <Button marginRight="2%" w="100px" h="40px">Borrar</Button>
+                    <Button w="100px" h="40px">Cancelar</Button>
                 </Box>
             </Box>
         </>

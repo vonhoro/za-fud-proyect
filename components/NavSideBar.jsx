@@ -1,7 +1,9 @@
 import { Box, Flex, Text, Grid, Link, Divider } from "@chakra-ui/core";
 export const NavSideBar = ({ changeToUbicacion, changeToPerfil, changeToSuscripcion, changeToNotifications, changeToBorrar_Cuenta }) => {
   return (
-    <Box>
+    <Box
+      marginLeft="5%"
+    >
       <p onClick={changeToSuscripcion}>Tipo de membresia</p>
 
       <p onClick={changeToPerfil}>Perfil</p>

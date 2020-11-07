@@ -84,6 +84,7 @@ export const UserWrapper = () => {
         </Box>
       </Flex >
       <Box
+        marginTop="10%"
         width="100%"
         height="100%"
         border="1px solid"
