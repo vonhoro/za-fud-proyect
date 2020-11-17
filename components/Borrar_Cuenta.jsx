@@ -25,21 +25,32 @@ export const Borrar_Cuenta = () => {
                 marginLeft="auto"
                 marginRight="auto"
                 marginBottom="10px"
-                backgroundColor="white"
-                padding="-20px"
+                backgroundColor="orange.400"
+                color="white"
+                padding="px"
             >
                 <h2>Borrar Cuenta</h2>
             </Box>
             <Box margin="auto" width="75%" paddingBottom="5%" >
                 <FormControl isRequired>
                     <FormLabel htmlFor="Fpassword">Contraseña</FormLabel>
-                    <Input id="Fpassword" placeholder="Introduzca su contraseña" />
+                    <Input 
+                    borderColor="gray.400"
+                    _hover={{ borderColor: "orange.400" }}
+                    id="Fpassword"
+                     placeholder="Introduzca su contraseña" 
+                     />
                 </FormControl>
 
                 <FormControl mt={5} isRequired fontWeight="500">
                     <span>Introduzca lo siguente frase: </span>
                     <FormLabel htmlFor="Ltrick" color="red.500">Soy tu padre!</FormLabel>
-                    <Input id="Ltrick" placeholder=" Frase secreta " />
+                    <Input 
+                    borderColor="gray.400"  
+                    _hover={{ borderColor: "orange.400" }}
+                    id="Ltrick" 
+                    placeholder=" Frase secreta " 
+                    />
                 </FormControl>
 
                 <Box marginTop="5%" textAlign="center"

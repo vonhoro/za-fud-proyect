@@ -12,8 +12,9 @@ export const Ubicacion = () => {
         marginLeft="auto"
         marginRight="auto"
         marginBottom="10px"
-        backgroundColor="white"
-        padding="-20px"
+        backgroundColor="orange.400"
+        color="white"
+        padding="px"
       >
         <h2>Opciones de ubicacion</h2>
       </Box>

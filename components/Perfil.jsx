@@ -17,16 +17,16 @@ export const Perfil = () => {
 
     <>
       <Box
-        borderTop="1px"
-        borderBottom="1px"
+        color="white"
+        borderBottom="0px"
         borderRadius="10px 10px 0px 0px"
         textAlign="center"
         marginTop="-1px"
         marginLeft="auto"
         marginRight="auto"
         marginBottom="10px"
-        backgroundColor="white"
-        padding="-20px"
+        backgroundColor="orange.400"
+        padding="px"
         width="100%"
         fontSize="20px"
       >
@@ -44,28 +44,55 @@ export const Perfil = () => {
       <Box margin="auto" width="75%" paddingBottom="5%" >
         <FormControl isRequired>
           <FormLabel htmlFor="Fname">Nombre</FormLabel>
-          <Input id="Fname" placeholder="Primer Nombre" />
+          <Input borderColor="gray.400"  
+          _hover={{ borderColor: "orange.400" }} 
+          id="Fname" 
+          placeholder="Primer Nombre" />
         </FormControl>
 
         <FormControl mt={5} isRequired>
           <FormLabel htmlFor="Lname">Apellido</FormLabel>
-          <Input id="Lname" placeholder="Segundo Nombre" />
+          <Input 
+          borderColor="gray.400"  
+          _hover={{ borderColor: "orange.400" }} 
+          id="Lname" 
+          placeholder="Segundo Nombre" />
         </FormControl>
 
         <FormControl mt={5} isRequired>
           <FormLabel htmlFor="Cpassword">Cambiar Contraseña</FormLabel>
-          <Input id="Cpassword" placeholder="Contraseña" />
+          <Input 
+          borderColor="gray.400"  
+          _hover={{ borderColor: "orange.400" }} 
+          id="Cpassword"
+           placeholder="Contraseña" />
         </FormControl>
 
         <FormControl mt={5} isRequired>
           <FormLabel htmlFor="Rpassword">Reescribir Contraseña</FormLabel>
-          <Input id="Rpassword" placeholder="Contraseña" />
+          <Input 
+          borderColor="gray.400"  
+          _hover={{ borderColor: "orange.400" }} 
+          id="Rpassword"
+           placeholder="Contraseña" />
         </FormControl>
 
         <Box marginTop="5%" textAlign="center"
         >
-          <Button marginRight="2%">Guardar</Button>
-          <Button>Cancelar</Button>
+          <Button 
+          marginRight="2%" 
+          border="none"
+          backgroundColor="blue.500"  
+          color="white"
+          _hover={{ borderColor: "white",backgroundColor: "orange.400", color: "white", borderRadius: "15px" }} 
+          >Guardar</Button>
+
+          <Button
+          border="none"
+          backgroundColor="blue.500"  
+          color="white"
+          _hover={{ borderColor: "white",backgroundColor: "orange.400", color: "white", borderRadius: "15px" }} 
+          >Cancelar</Button>
         </Box>
       </Box>
     </>

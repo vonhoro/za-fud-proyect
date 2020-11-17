@@ -51,10 +51,10 @@ export const UserWrapper = () => {
       < NavBar />
       <Flex
         width="full"
-        height="full"
+        height="100%"
         paddingTop="12%"
         minHeight="100vh"
-        backgroundColor="rgba(255, 255, 233, 0.6)"
+        backgroundColor="white"
       >
         <Box
           marginTop="10px"
@@ -64,14 +64,14 @@ export const UserWrapper = () => {
           <NavSideBar changeToSuscripcion={e => setVista("Suscripcion")} changeToUbicacion={e => setVista('Ubicacion')} changeToPerfil={e => setVista('Perfil')} changeToNotifications={e => setVista("Notifications")} changeToBorrar_Cuenta={e => setVista("Borrar_Cuenta")} />
         </Box>
 
-        <Box
-          backgroundColor="orange.200"
-          border="1px solid"
+        <Box  
+          boxShadow="1px 2px 6px gray"
+          backgroundColor="white"
           borderRadius="10px"
           marginLeft="30px"
           marginTop="10px"
           marginRight="10px"
-          marginBottom="10px"
+          marginBottom="10%"
           width="65%"
           height={[
             "100%", // base
@@ -84,7 +84,7 @@ export const UserWrapper = () => {
         </Box>
       </Flex >
       <Box
-        marginTop="10%"
+        marginTop="0%"
         width="100%"
         height="100%"
         border="1px solid"
