@@ -34,22 +34,22 @@ export const Borrar_Cuenta = () => {
             <Box margin="auto" width="75%" paddingBottom="5%" >
                 <FormControl isRequired>
                     <FormLabel htmlFor="Fpassword">Contraseña</FormLabel>
-                    <Input 
-                    borderColor="gray.400"
-                    _hover={{ borderColor: "orange.400" }}
-                    id="Fpassword"
-                     placeholder="Introduzca su contraseña" 
-                     />
+                    <Input
+                        borderColor="gray.400"
+                        _hover={{ borderColor: "orange.400" }}
+                        id="Fpassword"
+                        placeholder="Introduzca su contraseña"
+                    />
                 </FormControl>
 
                 <FormControl mt={5} isRequired fontWeight="500">
                     <span>Introduzca lo siguente frase: </span>
                     <FormLabel htmlFor="Ltrick" color="red.500">Soy tu padre!</FormLabel>
-                    <Input 
-                    borderColor="gray.400"  
-                    _hover={{ borderColor: "orange.400" }}
-                    id="Ltrick" 
-                    placeholder=" Frase secreta " 
+                    <Input
+                        borderColor="gray.400"
+                        _hover={{ borderColor: "orange.400" }}
+                        id="Ltrick"
+                        placeholder=" Frase secreta "
                     />
                 </FormControl>
 
@@ -70,8 +70,22 @@ export const Borrar_Cuenta = () => {
                             <p>¿Seguro que quiere borrar su cuenta?</p>
                         </Text>
                     </Box>
-                    <Button marginRight="2%" w="100px" h="40px">Borrar</Button>
-                    <Button w="100px" h="40px">Cancelar</Button>
+                    <Box>
+                        <Button
+                            marginRight="2%"
+                            border="none"
+                            backgroundColor="blue.500"
+                            color="white"
+                            _hover={{ borderColor: "white", backgroundColor: "orange.400", color: "white", borderRadius: "15px" }}
+                        >Guardar</Button>
+
+                        <Button
+                            border="none"
+                            backgroundColor="blue.500"
+                            color="white"
+                            _hover={{ borderColor: "white", backgroundColor: "orange.400", color: "white", borderRadius: "15px" }}
+                        >Cancelar</Button>
+                    </Box>
                 </Box>
             </Box>
         </>
