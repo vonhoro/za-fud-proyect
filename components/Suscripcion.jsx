@@ -2,12 +2,18 @@ import { Box, Icon, Flex, Link, SimpleGrid } from "@chakra-ui/core";
 export const Suscripcion = () => {
   return (
     <Box>
-      <Box textAlign="center" backgroundColor="orange.200" paddingLeft="10PX">
+      <Box 
+      textAlign="center" 
+      backgroundColor="orange.400"
+      color="white" 
+      padding="px"
+      borderRadius="10px 10px 0px 0px"
+      >
         <h2>Membresia</h2>
       </Box>
 
       <Box
-        border="1px solid white"
+        color="#654321"
         backgroundColor="white"
         borderRadius="0px 0px 10px 10px"
       >
