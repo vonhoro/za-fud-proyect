@@ -14,7 +14,6 @@ import { InputField } from "./InputField";
 
 export const Perfil = () => {
   return (
-
     <>
       <Box
         textAlign="center"
@@ -25,22 +24,22 @@ export const Perfil = () => {
       >
         <h2>Perfil</h2>
       </Box>
-      <Box
-        textAlign="center"
-        marginTop="20px"
-      >
+      <Box textAlign="center" marginTop="20px">
         <Avatar
           size="2xl"
           name="Profile_image"
           src="https://pixabay.com/get/5fe7d6474c52b114f6d0877dc52c357c083ed8e55052704b772e7c.svg?attachment="
-        /></Box>
-      <Box margin="auto" width="75%" paddingBottom="5%" >
+        />
+      </Box>
+      <Box margin="auto" width="75%" paddingBottom="5%">
         <FormControl isRequired>
           <FormLabel htmlFor="Fname">Nombre</FormLabel>
-          <Input borderColor="gray.400"
+          <Input
+            borderColor="gray.400"
             _hover={{ borderColor: "orange.400" }}
             id="Fname"
-            placeholder="Primer Nombre" />
+            placeholder="Primer Nombre"
+          />
         </FormControl>
 
         <FormControl mt={5} isRequired>
@@ -49,7 +48,8 @@ export const Perfil = () => {
             borderColor="gray.400"
             _hover={{ borderColor: "orange.400" }}
             id="Lname"
-            placeholder="Segundo Nombre" />
+            placeholder="Segundo Nombre"
+          />
         </FormControl>
 
         <FormControl mt={5} isRequired>
@@ -58,7 +58,8 @@ export const Perfil = () => {
             borderColor="gray.400"
             _hover={{ borderColor: "orange.400" }}
             id="Cpassword"
-            placeholder="Contraseña" />
+            placeholder="Contraseña"
+          />
         </FormControl>
 
         <FormControl mt={5} isRequired>
@@ -67,25 +68,39 @@ export const Perfil = () => {
             borderColor="gray.400"
             _hover={{ borderColor: "orange.400" }}
             id="Rpassword"
-            placeholder="Contraseña" />
+            placeholder="Contraseña"
+          />
         </FormControl>
 
-        <Box marginTop="5%" textAlign="center"
-        >
+        <Box marginTop="5%" textAlign="center">
           <Button
             marginRight="2%"
             border="none"
             backgroundColor="blue.500"
             color="white"
-            _hover={{ borderColor: "white", backgroundColor: "orange.400", color: "white", borderRadius: "15px" }}
-          >Guardar</Button>
+            _hover={{
+              borderColor: "white",
+              backgroundColor: "orange.400",
+              color: "white",
+              borderRadius: "15px",
+            }}
+          >
+            Guardar
+          </Button>
 
           <Button
             border="none"
             backgroundColor="blue.500"
             color="white"
-            _hover={{ borderColor: "white", backgroundColor: "orange.400", color: "white", borderRadius: "15px" }}
-          >Cancelar</Button>
+            _hover={{
+              borderColor: "white",
+              backgroundColor: "orange.400",
+              color: "white",
+              borderRadius: "15px",
+            }}
+          >
+            Cancelar
+          </Button>
         </Box>
       </Box>
     </>

@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
 
 import { LoginHeader } from "../components/LoginHeader";
 import { LoginForm } from "../components/LoginForm";
-import { Faq } from "../components/Faq"
+import { Faq } from "../components/Faq";
 
 import { Box, Flex } from "@chakra-ui/core";
 

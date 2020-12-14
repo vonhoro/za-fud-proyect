@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Faq } from "../components/Faq"
+import { Faq } from "../components/Faq";
 import { NavBar } from "../containers/NavBar";
 import { PublicityPoi } from "../containers/PublicityPoi";
 import { MealList } from "../containers/MealList";
@@ -21,15 +21,12 @@ const lista = Array.from(
   })
 );
 export default function Home() {
-  const { loading, error, data } = useQuery(CHECK_USER);
-  let check = null;
-  console.log(data?.me);
   return (
     <>
       <Head>
         <title>Za fud Proyect</title>
       </Head>
-      <NavBar UserData={data?.me} />
+      <NavBar />
 
       <PublicityPoi />
       <MealList />

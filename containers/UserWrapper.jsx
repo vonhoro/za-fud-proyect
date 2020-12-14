@@ -1,54 +1,45 @@
-import React from 'react'
+import React from "react";
 
 import { NavSideBar } from "../components/NavSideBar";
 import { NavBar } from "../containers/NavBar";
 import { Suscripcion } from "../components/Suscripcion";
 import { Perfil } from "../components/Perfil";
 import { Ubicacion } from "../components/Ubicacion";
-import { Notifications } from "../components/Notifications"
-import { Borrar_Cuenta } from "../components/Borrar_Cuenta"
-import { Faq } from "../components/Faq"
+import { Notifications } from "../components/Notifications";
+import { Borrar_Cuenta } from "../components/Borrar_Cuenta";
+import { Faq } from "../components/Faq";
 import { Box, Flex, Center } from "@chakra-ui/core";
 
-
-
 export const UserWrapper = () => {
-
-  const [vista, setVista] = React.useState('Perfil')
+  const [vista, setVista] = React.useState("Perfil");
 
   const Pagina = (vista) => {
-
     switch (vista) {
-      case 'Suscripcion':
-        return < Suscripcion />
-        break
+      case "Suscripcion":
+        return <Suscripcion />;
+        break;
 
-      case 'Perfil':
-        return <Perfil />
-        break
+      case "Perfil":
+        return <Perfil />;
+        break;
 
       case "Ubicacion":
-        return < Ubicacion />
-        break
+        return <Ubicacion />;
+        break;
 
       case "Notifications":
-        return <Notifications />
-        break
+        return <Notifications />;
+        break;
 
       case "Borrar_Cuenta":
-        return <Borrar_Cuenta />
-        break
+        return <Borrar_Cuenta />;
+        break;
     }
-
-
-
-  }
-
-
+  };
 
   return (
     <>
-      < NavBar />
+      <NavBar />
       <Flex
         width="full"
         height="100%"
@@ -56,15 +47,17 @@ export const UserWrapper = () => {
         minHeight="100vh"
         backgroundColor="white"
       >
-        <Box
-          marginTop="10px"
-          marginLeft="10px"
-          width="35%"
-          height="50%">
-          <NavSideBar changeToSuscripcion={e => setVista("Suscripcion")} changeToUbicacion={e => setVista('Ubicacion')} changeToPerfil={e => setVista('Perfil')} changeToNotifications={e => setVista("Notifications")} changeToBorrar_Cuenta={e => setVista("Borrar_Cuenta")} />
+        <Box marginTop="10px" marginLeft="10px" width="35%" height="50%">
+          <NavSideBar
+            changeToSuscripcion={(e) => setVista("Suscripcion")}
+            changeToUbicacion={(e) => setVista("Ubicacion")}
+            changeToPerfil={(e) => setVista("Perfil")}
+            changeToNotifications={(e) => setVista("Notifications")}
+            changeToBorrar_Cuenta={(e) => setVista("Borrar_Cuenta")}
+          />
         </Box>
 
-        <Box  
+        <Box
           boxShadow="1px 2px 6px gray"
           backgroundColor="white"
           borderRadius="10px"
@@ -82,7 +75,7 @@ export const UserWrapper = () => {
         >
           {Pagina(vista)}
         </Box>
-      </Flex >
+      </Flex>
       <Box
         marginTop="0%"
         width="100%"

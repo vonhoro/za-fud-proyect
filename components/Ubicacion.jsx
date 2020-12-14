@@ -1,7 +1,14 @@
-import { Box, FormLabel, Switch, Icon, Flex, Link, SimpleGrid } from "@chakra-ui/core";
+import {
+  Box,
+  FormLabel,
+  Switch,
+  Icon,
+  Flex,
+  Link,
+  SimpleGrid,
+} from "@chakra-ui/core";
 export const Ubicacion = () => {
   return (
-
     <Box>
       <Box
         borderTop="1px"
@@ -19,12 +26,7 @@ export const Ubicacion = () => {
         <h2>Opciones de ubicacion</h2>
       </Box>
 
-      <Box
-        marginTop="15px"
-        marginLeft="15px"
-        marginBottom="10px"
-        h="400px"
-      >
+      <Box marginTop="15px" marginLeft="15px" marginBottom="10px" h="400px">
         <FormLabel htmlFor="ubicacion-alerts">Habilitar ubicacion</FormLabel>
         <Switch id="ubicacion-alerts" />
       </Box>
